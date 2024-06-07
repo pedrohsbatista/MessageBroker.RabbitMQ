@@ -23,14 +23,17 @@ namespace Publisher.Infra.RabbitMQ
         public void Send(string queue, byte[] message)
         {
             _channel.QueueDeclare(queue: queue,
-                                 durable: false,
+                                 durable: true, // se false a fila será perdida caso o servidor do rabbitmq seja reiniciado
                                  exclusive: false,
                                  autoDelete: false,
                                  arguments: null);
 
+            var basicProperties = _channel.CreateBasicProperties();
+            basicProperties.Persistent = true; // garante (não em sua tototalidade) que as mensagens na fila fiquem armazenadas em disco e não sejam perdidas caso o servidor do rabbitmq seja reiniciado
+
             _channel.BasicPublish(exchange: string.Empty,
                                   routingKey: queue,
-                                  basicProperties: null,
+                                  basicProperties: basicProperties,
                                   body: message);
         }
 

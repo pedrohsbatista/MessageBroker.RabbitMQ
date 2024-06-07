@@ -3,21 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer.Api", "Consumer.Api\Consumer.Api.csproj", "{8ABAD123-28F1-4200-8CDE-CFB35D46A142}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumer.Api", "Consumer.Api\Consumer.Api.csproj", "{8ABAD123-28F1-4200-8CDE-CFB35D46A142}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher.Api", "Publisher.Api\Publisher.Api.csproj", "{B2A91D44-3B84-44B3-BACE-A92BE43A6C9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Publisher.Api", "Publisher.Api\Publisher.Api.csproj", "{B2A91D44-3B84-44B3-BACE-A92BE43A6C9A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consumer", "Consumer", "{2EECC60D-CD0C-4E26-9984-5A2B139B60A4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Publisher", "Publisher", "{D35BBB5D-3B5C-47EC-BA2B-0FCCCB8B5351}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer.Model", "Consumer.Model\Consumer.Model.csproj", "{6334D5A9-8042-4C35-9707-6642F7D5AE9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumer.Model", "Consumer.Model\Consumer.Model.csproj", "{6334D5A9-8042-4C35-9707-6642F7D5AE9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer.Infra", "Consumer.Infra\Consumer.Infra.csproj", "{FB457881-0E4A-4A6A-BE55-E183FD5B22EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumer.Infra", "Consumer.Infra\Consumer.Infra.csproj", "{FB457881-0E4A-4A6A-BE55-E183FD5B22EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher.Model", "Publisher.Model\Publisher.Model.csproj", "{75FDD9B4-3C60-4232-A658-86BD37447648}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Publisher.Model", "Publisher.Model\Publisher.Model.csproj", "{75FDD9B4-3C60-4232-A658-86BD37447648}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher.Infra", "Publisher.Infra\Publisher.Infra.csproj", "{DBCA3745-98EA-4A2C-BF3A-A123521FB5E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Publisher.Infra", "Publisher.Infra\Publisher.Infra.csproj", "{DBCA3745-98EA-4A2C-BF3A-A123521FB5E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher.Test", "Publisher.Test\Publisher.Test.csproj", "{88E4577D-218D-4123-BC4B-CEB58D66EEED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{DBCA3745-98EA-4A2C-BF3A-A123521FB5E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBCA3745-98EA-4A2C-BF3A-A123521FB5E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBCA3745-98EA-4A2C-BF3A-A123521FB5E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88E4577D-218D-4123-BC4B-CEB58D66EEED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88E4577D-218D-4123-BC4B-CEB58D66EEED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88E4577D-218D-4123-BC4B-CEB58D66EEED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88E4577D-218D-4123-BC4B-CEB58D66EEED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{FB457881-0E4A-4A6A-BE55-E183FD5B22EE} = {2EECC60D-CD0C-4E26-9984-5A2B139B60A4}
 		{75FDD9B4-3C60-4232-A658-86BD37447648} = {D35BBB5D-3B5C-47EC-BA2B-0FCCCB8B5351}
 		{DBCA3745-98EA-4A2C-BF3A-A123521FB5E6} = {D35BBB5D-3B5C-47EC-BA2B-0FCCCB8B5351}
+		{88E4577D-218D-4123-BC4B-CEB58D66EEED} = {D35BBB5D-3B5C-47EC-BA2B-0FCCCB8B5351}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C33E41E-8DEB-4462-98D2-18999A85C45E}
