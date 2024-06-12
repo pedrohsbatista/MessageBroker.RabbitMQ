@@ -4,19 +4,18 @@ using System.Text.Json;
 
 namespace Publisher.Model.Services
 {
-    public class ProductService
+    public class OrderService
     {
         private readonly IMessageBroker _messageBroker;
-
-        public ProductService(IMessageBroker messageBroker)
+        public OrderService(IMessageBroker messageBroker)
         {            
             _messageBroker = messageBroker;
         }
 
-        public void SendProduct(Product product)
+        public void SendOrder(Order order)
         {
-            var message = JsonSerializer.SerializeToUtf8Bytes(product);
-            _messageBroker.SendQueue("products", message);
+            var message = JsonSerializer.SerializeToUtf8Bytes(order);
+            _messageBroker.SendExchange("order", "fanout", message);
         }
     }
 }

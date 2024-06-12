@@ -20,7 +20,7 @@ namespace Publisher.Infra.RabbitMQ
             _channel = _connection.CreateModel();
         }
 
-        public void Send(string queue, byte[] message)
+        public void SendQueue(string queue, byte[] message)
         {
             _channel.QueueDeclare(queue: queue,
                                  durable: true, // se false a fila será perdida caso o servidor do rabbitmq seja reiniciado
@@ -34,6 +34,16 @@ namespace Publisher.Infra.RabbitMQ
             _channel.BasicPublish(exchange: string.Empty,
                                   routingKey: queue,
                                   basicProperties: basicProperties,
+                                  body: message);
+        }
+
+        public void SendExchange(string exchange, string type, byte[] message)
+        {
+            _channel.ExchangeDeclare(exchange, type);
+
+            _channel.BasicPublish(exchange: exchange,
+                                  routingKey: string.Empty,
+                                  basicProperties: null,
                                   body: message);
         }
 

@@ -5,7 +5,7 @@ using RabbitMQ.Client.Events;
 
 namespace Consumer.Infra.RabbitMQ
 {
-    public class ProductRabbitMQConsumer : BackgroundService
+    public class ProductRabbitMQConsumer : BackgroundService, IDisposable
     {
         private readonly IConnection _connection;
         private readonly IModel _channel;
@@ -18,7 +18,7 @@ namespace Consumer.Infra.RabbitMQ
 
             var factory = new ConnectionFactory
             {
-                HostName = "localhost",
+                HostName = "localhost"
             };
 
             _connection = factory.CreateConnection();

@@ -2,6 +2,8 @@
 {
     public interface IMessageBroker
     {
-        void Send(string queue, byte[] message);
+        void SendQueue(string queue, byte[] message);
+
+        void SendExchange(string exchange, string type, byte[] message);
     }
 }
