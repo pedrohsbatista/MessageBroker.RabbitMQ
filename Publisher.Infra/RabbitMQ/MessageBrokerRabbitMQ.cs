@@ -37,12 +37,12 @@ namespace Publisher.Infra.RabbitMQ
                                   body: message);
         }
 
-        public void SendExchange(string exchange, string type, byte[] message)
+        public void SendExchange(string exchange, string type, byte[] message, string routingKey)
         {
             _channel.ExchangeDeclare(exchange, type);
 
             _channel.BasicPublish(exchange: exchange,
-                                  routingKey: string.Empty,
+                                  routingKey: routingKey,
                                   basicProperties: null,
                                   body: message);
         }

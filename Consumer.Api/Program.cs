@@ -14,8 +14,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.AddSingleton<ProductService>();
 builder.Services.AddSingleton<OrderService>();
+builder.Services.AddSingleton<PaymentService>();
 builder.Services.AddHostedService<ProductRabbitMQConsumer>();
 builder.Services.AddHostedService<OrderRabbitMQConsumer>();
+builder.Services.AddHostedService<PaymentRabbitMQConsumer>();
 
 var app = builder.Build();
 

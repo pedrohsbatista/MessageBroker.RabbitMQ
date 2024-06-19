@@ -26,6 +26,9 @@ namespace Consumer.Infra.RabbitMQ
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            _channel.ExchangeDeclare(exchange: "order",
+                                     type: "fanout");
+
             var queue = _channel.QueueDeclare().QueueName; // cria fila com nome automático, não durável, excluída automaticamente
 
             _channel.QueueBind(
