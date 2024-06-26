@@ -15,9 +15,11 @@ builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSet
 builder.Services.AddSingleton<ProductService>();
 builder.Services.AddSingleton<OrderService>();
 builder.Services.AddSingleton<PaymentService>();
+builder.Services.AddSingleton<ReviewService>();
 builder.Services.AddHostedService<ProductRabbitMQConsumer>();
 builder.Services.AddHostedService<OrderRabbitMQConsumer>();
 builder.Services.AddHostedService<PaymentRabbitMQConsumer>();
+builder.Services.AddHostedService<ReviewRabbitMQConsumer>();
 
 var app = builder.Build();
 

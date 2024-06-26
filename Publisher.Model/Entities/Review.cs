@@ -2,12 +2,16 @@
 
 namespace Publisher.Model.Entities
 {
-    public class Payment
+    public class Review
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
         public Guid OrderId { get; set; }
 
-        public PaymentType PaymentType { get; set; }
+        public ReviewCategory ReviewCategory { get; set; }
+
+        public Rating Rating { get; set; }
+
+        public string Description { get; set; }
     }
 }

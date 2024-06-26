@@ -7,16 +7,16 @@ using RabbitMQ.Client.Events;
 
 namespace Consumer.Infra.RabbitMQ
 {
-    public class PaymentRabbitMQConsumer : BackgroundService, IDisposable
+    public class ReviewRabbitMQConsumer : BackgroundService, IDisposable
     {
+        private readonly ReviewService _reviewService;
+        private readonly AppSettings _appSettings;
         private readonly IConnection _connection;
         private readonly IModel _channel;
-        private readonly PaymentService _paymentService;
-        private readonly AppSettings _appSettings;
 
-        public PaymentRabbitMQConsumer(PaymentService paymentService, IOptions<AppSettings> appSettings)
-        {
-            _paymentService = paymentService;
+        public ReviewRabbitMQConsumer(ReviewService reviewService, IOptions<AppSettings> appSettings)
+        {            
+            _reviewService = reviewService;
             _appSettings = appSettings.Value;
 
             var factory = new ConnectionFactory
@@ -25,21 +25,22 @@ namespace Consumer.Infra.RabbitMQ
             };
 
             _connection = factory.CreateConnection();
-            _channel = _connection.CreateModel();          
+            _channel = _connection.CreateModel();
         }
+
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            _channel.ExchangeDeclare(exchange: "payment", 
-                                     type: "direct");
+            _channel.ExchangeDeclare(exchange: "review",
+                                     type: "topic");
 
             var queue = _channel.QueueDeclare().QueueName;
 
-            foreach (var paymentType in _appSettings.PaymentRoutingKeys)
+            foreach (var routingKey in _appSettings.ReviewRoutingKeys)
             {
                 _channel.QueueBind(queue: queue,
-                                   exchange: "payment",
-                                   routingKey: $"payment_{paymentType}".ToLower());
+                                  exchange: "review",
+                                  routingKey: routingKey);
             }
 
             var consumer = new EventingBasicConsumer(_channel);
@@ -48,13 +49,13 @@ namespace Consumer.Infra.RabbitMQ
                 if (stoppingToken.IsCancellationRequested)
                     return;
 
-                var body = ea.Body.ToArray();
-                _paymentService.ProcessPayment(body);
-            };                               
+                var message = ea.Body.ToArray();
+                _reviewService.ProcessReview(message);
+            };
 
             _channel.BasicConsume(queue: queue,
-                                  autoAck: true,
-                                  consumer: consumer);
+                                 autoAck: true,
+                                 consumer: consumer);
 
             return Task.CompletedTask;
         }
@@ -62,7 +63,7 @@ namespace Consumer.Infra.RabbitMQ
         public override void Dispose()
         {
             _channel?.Dispose();
-            _connection?.Dispose();            
+            _connection?.Dispose();
             base.Dispose();
         }
     }

@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<PaymentService>();
+builder.Services.AddScoped<ReviewService>();
 builder.Services.AddScoped<IMessageBroker, MessageBrokerRabbitMQ>();
 
 var app = builder.Build();

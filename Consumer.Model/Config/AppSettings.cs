@@ -6,6 +6,8 @@ namespace Consumer.Model.Config
     {
         public int TimeDelay { get; set; }
 
-        public List<PaymentType> PaymentQueues { get; set; } = new();
+        public List<string> PaymentRoutingKeys { get; set; } = new();
+
+        public List<string>  ReviewRoutingKeys {  get; set; } = new();
     }
 }
